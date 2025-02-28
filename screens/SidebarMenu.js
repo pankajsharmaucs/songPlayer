@@ -12,12 +12,12 @@ const SidebarMenu = () => {
         Sidebar Menu
       </Text>
       {/* Home Link */}
-      <TouchableOpacity onPress={() => navigation.navigate("MainPage")}>
+      <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigator",{screen:'MainPage'})}>
         <Text style={{ fontSize: 16, paddingVertical: 10 }}>Home</Text>
       </TouchableOpacity>
 
       {/* Category Link */}
-      <TouchableOpacity onPress={() => navigation.navigate("Category")}>
+      <TouchableOpacity onPress={() => navigation.navigate("DrawerNavigator",{screen:'Category'})}>
         <Text style={{ fontSize: 16, paddingVertical: 10 }}>Category</Text>
       </TouchableOpacity>
     </View>

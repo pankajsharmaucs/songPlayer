@@ -10,7 +10,7 @@ export default function LauncherPage() {
   useEffect(() => {
 
     const timer = setTimeout(() => {
-      navigation.navigate('MainPage');
+      navigation.navigate("DrawerNavigator",{screen:'MainPage'})
     }, 3000);
 
   }, [navigation])

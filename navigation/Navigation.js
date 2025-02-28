@@ -12,12 +12,30 @@ import SidebarMenu from "../screens/SidebarMenu";
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
+// Main Drawer Navigator
+const DrawerNavigator = () => {
+    return (
+        <Drawer.Navigator
+            drawerContent={() => <SidebarMenu />}
+            screenOptions={{
+                headerTitle: 'Admin Panel', // Set the title of the DrawerNavigator here
+                headerStyle: {
+                    backgroundColor: '#f8f8f8', // Optional: Customize header style
+                },
+                headerTintColor: '#000', // Optional: Text color for the header title
+                headerTitleAlign: 'center', // Optional: Center the header title
+            }}
+        >
+            <Drawer.Screen name="MainPage" component={MainPage} />
+            <Drawer.Screen name="Category" component={Category} />
+        </Drawer.Navigator>
+    );
+};
 
-
-// Main Stack Navigator with a custom header and Drawer
+// Main Stack Navigator (for LauncherPage and Drawer)
 const MainStack = () => {
     return (
-        <Stack.Navigator initialRouteName="MainPage">
+        <Stack.Navigator initialRouteName="DrawerNavigator">
             <Stack.Screen
                 name="Launcher"
                 component={LauncherPage}
@@ -26,31 +44,14 @@ const MainStack = () => {
                 }}
             />
             <Stack.Screen
-                name="MainPage"
-                component={MainPage}
+                name="DrawerNavigator"
+                component={DrawerNavigator}
                 options={{
                     headerShown: false,
-                    title: 'Home',
-                }}
-            />
-            <Stack.Screen
-                name="Category"
-                component={Category}
-                options={{
-                    headerShown: false,
-                    title: 'Category',
+                    title: 'Title',
                 }}
             />
         </Stack.Navigator>
-    );
-};
-
-// Drawer Navigator that wraps the Main Stack
-const AppDrawer = () => {
-    return (
-        <Drawer.Navigator drawerContent={() => <SidebarMenu />} >
-            <Drawer.Screen name="Plyr" component={MainStack} />
-        </Drawer.Navigator>
     );
 };
 
@@ -58,7 +59,7 @@ const AppDrawer = () => {
 const Navigation = () => {
     return (
         <NavigationContainer>
-            <AppDrawer />
+            <MainStack />
         </NavigationContainer>
     );
 };
